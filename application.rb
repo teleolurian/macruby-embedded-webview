@@ -80,6 +80,8 @@ class RequestHandler
   end
   
   def handle(r)
+    url_string = r.URL.absoluteString.sub(/^app\:/, '')
+    
     <<-HTML
       <html>
         <style>
@@ -87,7 +89,7 @@ class RequestHandler
           h1 { font-size: 48px; width: 100%; text-align: center; }
         </style>
         <body>
-          <h1>#{r.URL.class.name}</h1>
+          <h1><%= url_string %></h1>
           <img src="#{path('avatar.jpg')}">
         </body>
       </html>
